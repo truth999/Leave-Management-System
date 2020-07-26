@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "EmployeeDetails";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="~/Content/Dashboard.css" rel="stylesheet" />
+    <script>
+        var username = '@ViewBag.username';
+        function redirectTo() {
+            window.location.href = "/Admin/AdminDashboard?username=" + username;
+        }
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetEmployeeDetails()">
+
+    <div class="container-fluid my-container">
+        <div class="row">
+            <div class="col-md-2" style="background-color: #57606f">
+
+            </div>
+            <div class="col-md-10 mycol2">
+                <input class="form-control float-right" style="width: 200px;margin-top: 10px;border-radius:1rem" type="search" placeholder="Search" aria-label="Search">
+                <h3 class="p-1 mt-3 ml-2" style="color: white">Employee Table</h3><br>
+            </div>
+        </div>
+        <div class="row h-100">
+            <div class="col-md-2 sidenav">
+                <i class="fa fa-user pb-3" style="display: block;font-size: 100px;text-align: center;color: white">
+                </i>
+                <a href="~/Admin/HistoryDetails"><h4 class="p-3">History</h4></a>
+                <a href="#null" onclick="redirectTo();"><h4 class="p-3">Dashboard</h4></a>
+                <a href="~/Login/Login"><h4 class="p-3">Sign Out</h4></a>
+            </div>
+            <div class="col-md-10">
+                <table class="table">
+                    <thead>
+                        <tr style="text-align: center">
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">UserType</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">DateOfBirth</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">City</th>
+                            <th scope="col">State</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center">
+                        <tr ng-repeat="Emp in Employees">
+                            <td>{{Emp.emp_id}}</td>
+                            <td>{{Emp.name}}</td>
+                            <td>{{Emp.usertype}}</td>
+                            <td>{{Emp.gender}}</td>
+                            <td>{{Emp.mobile}}</td>
+                            <td>{{Emp.email}}</td>
+                            <td>{{Emp.dateofbirth.slice(6,-2) | date : 'dd-MM-yyyy'}}</td>
+                            <td>{{Emp.address}}</td>
+                            <td>{{Emp.city}}</td>
+                            <td>{{Emp.state}}</td>
+                            <td><button type="button" class="fa fa-ban" ng-click="BlockUser(Emp)" style="color:red;margin-right: 20px" ></button><button type="button" class="fa fa-unlock" style="color: blue" ng-click="UnblockUser(Emp)"></button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

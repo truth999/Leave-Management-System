@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Apply For Leave";
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="~/Content/profile.css" rel="stylesheet" />
+    <script>
+        var username = '@ViewBag.username';
+        function redirectTo() {
+            window.location.href = "/Employee/Dashboard?username=" + username;
+        }
+    </script>
+</head>
+<body ng-app='myApp' ng-controller='myCtrl'>
+    <div class="container-fluid my-container h-100">
+        <div class="row">
+            <div class="col-md-2" style="background-color: #57606f">
+
+            </div>
+            <div class="col-md-10 mycol2">
+
+                <h3 class="p-1 mt-3 ml-2" style="color: white">Apply For Leave</h3><br>
+            </div>
+        </div>
+        <div class="row h-100">
+            <div class="col-md-2 sidenav">
+                <i class="fa fa-user pb-3" style="display: block;font-size: 100px;text-align: center;color: white">
+                </i>
+                <a href="~/Employee/EmployeeProfile"><h4 class="p-3">My Profile</h4></a>
+                <a href ="#null" onclick="redirectTo();"><h4 class="p-3">Dashboard</h4></a>
+                <a href="~/Login/Login"><h4 class="p-3">Sign Out</h4></a>
+            </div>
+            <div class="col-md-10 pt-5 pb-5">
+                <form name="myForm">
+
+                    <div class="row" style="margin-top: 2rem">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" for="name" style="font-size: 30px;">Leave Type :</label>
+                        </div>
+                        <div class="col-md-4 m-2 p-2">
+                            <!-- <input type="text" class="form-control form-control-lg" id="Leavetype" placeholder="Leave Type" ng-required='true' name="Leavetype" ng-model="Leavetype">
+                             -->
+                            <select class="form-control form-control-lg" id="Leavetype" name="Leavetype" ng-required='true' ng-model='leave.leavetype'>
+                                <option value="">Select Leave Type</option>>
+                                <option>Half Leave</option>
+                                <option>Full Leave</option>
+                            </select>
+                            <span style="color: red" ng-show='myForm.Leavetype.$touched && myForm.Leavetype.$error.required'>Leave Type is required</span>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                    <div class="row" style="margin-top: 1rem">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" for="name" style="font-size: 30px;">Start-date :</label>
+                        </div>
+                        <div class="col-md-4 m-2 p-2">
+                            <div class="form-group">
+                                <div class="input-group">
+
+                                    <input type="text" class="form-control form-control-lg" id="startdate" name="startdate" placeholder="Start Date" ng-required='true' ng-model='leave.startdate' uib-datepicker-popup="{{format}}" min-date="minDate1" is-open="showdp" datepicker-options="dateOptions1" popup-placement="bottom-left" contenteditable="false" show-button-bar='false' ng-click="open($event)" date-disabled="disabled(date, mode)"
+                                           ng-pattern="/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/">
+
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar fa-3x" ng-click="open($event)"></span>
+                                    </span>
+                                </div>
+                                <span style="color: red" ng-show='myForm.startdate.$touched && myForm.startdate.$error.required'>Start Date is required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" for="name" style="font-size: 30px;">End-date :</label>
+                        </div>
+                        <div class="col-md-4 m-2 p-2">
+                            <div class="form-group">
+                                <div class="input-group">
+
+                                    <input type="text" class="form-control form-control-lg" id="enddate" name="enddate" placeholder="End Date" ng-required='true' ng-model='leave.enddate' uib-datepicker-popup="{{format}}" is-open="showdp1" min-date="leave.startdate" max-date="maxDate" datepicker-options="dateOptions" popup-placement="bottom-left" show-button-bar='false' contenteditable="false" date-disabled="disabled(date, mode)" ng-change="difference(leave.startdate,leave.enddate)">
+
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar fa-3x" ng-click="open1($event)" ng-if="leave.startdate"></span>
+                                    </span>
+                                </div>
+                                <span style="color: red" ng-show='myForm.enddate.$touched && myForm.enddate.$error.required'>End Date is required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" for="leaveduration" style="font-size: 30px;">Leave Duration :</label>
+                        </div>
+                        <div class="col-md-4 m-2 p-2">
+                            <input type="text" class="form-control form-control-lg" id="leaveduration" ng-required='true' ng-model="leave.leaveduration" name="leaveduration" ng-disabled='true'>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                    <div class="row" style="margin-top: 1rem">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" for="description" style="font-size: 30px;">Description :</label>
+                        </div>
+                        <div class="col-md-4 m-2 p-2">
+                            <textarea type="text" class="form-control form-control-lg" id="description" placeholder="Description" ng-required='true' name="description" ng-model="leave.leavedescription" maxlength="130"></textarea>
+                            <span style="color: red" ng-show='myForm.description.$touched && myForm.description.$error.required'>Description is required</span>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                    @*<div><input type="hidden" name="leavestatus" ng-model="leave.leavestatus" /></div>*@
+
+                    <div class="row" style="margin-top: 1rem">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-3 m-2 p-2 text-center">
+                            <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="LeaveDetails()">Apply For Leave</button>
+                        </div>
+                        <div class="col-md-5"></div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

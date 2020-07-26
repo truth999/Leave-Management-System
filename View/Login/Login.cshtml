@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Login_Design.css" rel="stylesheet" />
+    
+    @*<script src="~/Scripts/Login_Validate.js"></script>*@
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <h1 style="text-align: center;margin-top: 50px;">Welcome to Leave Management System</h1>
+    <div class="container my-container">
+        <form name="myForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" ng-required='true' name="username" ng-model="login.username">
+                <span style="color: red" ng-show='myForm.username.$touched && myForm.username.$error.required'>Username is required</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-required='true' ng-model="login.password">
+                <span style="color: red" ng-show='myForm.password.$touched && myForm.password.$error.required'>Password is required</span>
+            </div>
+
+
+            @*<div class="form-group">
+                <label for="usertype">UserType</label>
+                <select class="form-control" id="usertype" ng-model='login.usertype' ng-required='true' name='usertype'>
+                    <option value="">Select</option>
+                    <option>Employee</option>
+                    <option>Admin</option>
+                </select>
+
+                <span style="color: red" ng-show='myForm.usertype.$touched && myForm.usertype.$error.required'>Usertype is required</span>
+            </div>*@
+            <a href="#" data-toggle="modal" data-target="#ForgetModal">forgot password?</a>
+            <div class="text-center" style="margin-top: 35px;">
+                <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="Login()">Login</button>
+            </div>
+        </form>
+        <div class="modal fade" id="ForgetModal" tabindex="-1" role="dialog" aria-labelledby="ForgetModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form name="ForgetForm" id="ForgetForm" novalidate>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Forget Password</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="email">Registered Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter Your Email" ng-required='true' name="email" ng-model="register.email">
+                            @*<span style="color: red" ng-show='ForgetForm.email.$touched && ForgetForm.email.$error.required'>Email is not valid</span>*@
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" ng-disabled="ForgetForm.$invalid" ng-click="ForgetPassword()">Submit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

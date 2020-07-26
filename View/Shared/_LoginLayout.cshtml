@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Leave Management System</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #2d3436">
+        @*<a href="#" class="navbar-brand font-weight-bold">Synoverge</a>*@
+        <div class="navbar-brand font-weight-bold">@Html.ActionLink("Synoverge", "Login", "Login", new { style = "color:white" })</div>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                @*<a href="Login.html" class="nav-item nav-link font-weight-bold">Home</a>*@
+                <div class="nav-item nav-link font-weight-bold">@Html.ActionLink("Home", "Login", "Login", new { style = "color: white" })</div>
+                <div class="nav-item nav-link font-weight-bold">@Html.ActionLink("AboutUs", "AboutUs", "Login", new { style = "color:white" })</div>
+            </div>
+            <div class="navbar-nav ml-auto">
+                @*<a href="Register.html" class="nav-item nav-link font-weight-bold">Register</a>*@
+                <div class="nav-item nav-link font-weight-bold">@Html.ActionLink("Login", "Login", "Login", new { style = "color:white" })</div>
+                <div class="nav-item nav-link font-weight-bold">@Html.ActionLink("Register", "Register", "Login", new { style = "color:white" })</div>
+            </div>
+        </div>
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/angularjs")*@
+    @Scripts.Render("~/bundles/Validate")
+    @RenderSection("scripts", required: false)
+    
+</body>
+</html>

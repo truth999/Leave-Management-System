@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "AdminDashboard";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="~/Content/Dashboard.css" rel="stylesheet" />
+    <script>
+        var username = '@ViewBag.username';
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <div class="container-fluid my-container">
+        <div class="row">
+            <div class="col-md-2 mycol" style="background-color: #57606f;">
+                <i class="fa fa-user my-user"></i>
+            </div>
+            <div class="col-md-10 mycol2">
+                <input class="form-control float-right" style="width: 200px;margin-top: 10px;border-radius:1rem" type="search" placeholder="Search" aria-label="Search">
+                <label>Name: {{register.name}}</label><br>
+                <label>Email-Id: {{register.email}} </label><br>
+                <label>Mobile: {{register.mobile}} </label><br>
+            </div>
+        </div>
+        <div class="row h-100">
+            <div class="col-md-2 sidenav">
+                <a href="~/Admin/EmployeeDetails"><h4 style="padding: 20px">Employees List</h4></a>
+                <a href="~/Admin/HistoryDetails"><h4 style="padding: 20px">History</h4></a>
+                <a href="~/Login/Login"><h4 style="padding: 20px">Sign Out</h4></a>
+            </div>
+            <div class="col-md-10">
+                <table class="table">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th scope="col">Employee Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Leave Type</th>
+                            <th scope="col">Leave Start</th>
+                            <th scope="col">Leave End</th>
+                            <th scope="col">Leave Days</th>
+                            <th scope="col">Leave Desc</th>
+                            <th scope="col">Leave Status</th>
+                            <th scope="col">Leave Balance</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center">
+                        <tr ng-repeat="a in Adminleave">
+                            <td>{{a.empid}}</td>
+                            <td>{{a.name}}</td>
+                            <td>{{a.leavetype}}</td>
+                            <td>{{a.startdate.slice(6,-2) | date : 'dd-MM-yyyy' }}</td>
+                            <td>{{a.enddate.slice(6,-2) | date : "dd-MM-yyyy" }}</td>
+                            <td>{{a.leaveduration}}</td>
+                            <td>{{a.leavedescription}}</td>
+                            <td>{{a.leavestatus}}</td>
+                            <td>{{a.leavebalance}}</td>
+                            <td><button type="button" ng-click="ApproveLeave(a)" class="fa fa-check" style="color: blue;margin-right: 20px;"></button><button type="button" class="fa fa-times" ng-click="RejectLeave(a)" style="color: red"></button></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

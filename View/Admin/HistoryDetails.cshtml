@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "HistoryDetails";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="~/Content/Dashboard.css" rel="stylesheet" />
+    <script>
+        var username = '@ViewBag.username';
+        function redirectTo() {
+            window.location.href = "/Admin/AdminDashboard?username=" + username;
+        }
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetHistoryDetails()">
+
+    <div class="container-fluid my-container">
+        <div class="row">
+            <div class="col-md-2" style="background-color: #57606f">
+
+            </div>
+            <div class="col-md-10 mycol2">
+                <input class="form-control float-right" style="width: 200px;margin-top: 10px;border-radius:1rem" type="search" placeholder="Search" aria-label="Search">
+                <h3 class="p-1 mt-3 ml-2" style="color: white">History Table</h3><br>
+            </div>
+        </div>
+        <div class="row h-100">
+            <div class="col-md-2 sidenav">
+                <i class="fa fa-user pb-3" style="display: block;font-size: 100px;text-align: center;color: white">
+                </i>
+                <a href="~/Admin/EmployeeDetails"><h4 class="p-3">Employee List</h4></a>
+                <a href="#null" onclick="redirectTo();"><h4 class="p-3">Dashboard</h4></a>
+                <a href="~/Login/Login"><h4 class="p-3">Sign Out</h4></a>
+            </div>
+            <div class="col-md-10">
+                <table class="table">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th scope="col">Employee Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Leave Type</th>
+                            <th scope="col">Leave Start</th>
+                            <th scope="col">Leave End</th>
+                            <th scope="col">Leave Days</th>
+                            <th scope="col">Leave Desc</th>
+                            <th scope="col">Leave Status</th>
+                            <th scope="col">Leave Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center">
+                        <tr ng-repeat="h in History">
+                            <td>{{h.empid}}</td>
+                            <td>{{h.name}}</td>
+                            <td>{{h.leavetype}}</td>
+                            <td>{{h.startdate.slice(6,-2) | date : 'dd-MM-yyyy' }}</td>
+                            <td>{{h.enddate.slice(6,-2) | date : "dd-MM-yyyy" }}</td>
+                            <td>{{h.leaveduration}}</td>
+                            <td>{{h.leavedescription}}</td>
+                            <td>{{h.leavestatus}}</td>
+                            <td>{{h.leavebalance}}</td>                           
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+

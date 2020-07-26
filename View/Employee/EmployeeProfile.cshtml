@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "Employee Profile";
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="~/Content/profile.css" rel="stylesheet" />
+    <script>
+        var username = '@ViewBag.username';
+        function redirectTo() {
+            window.location.href = "/Employee/Dashboard?username=" + username;
+        }
+    </script>
+</head>
+<body ng-app='myApp' ng-controller='myCtrl' ng-init="GetProfileDetails()">
+    <div class="container-fluid my-container h-100">
+        <div class="row">
+            <div class="col-md-2" style="background-color: #57606f">
+
+            </div>
+            <div class="col-md-10 mycol2">
+
+                <h3 class="p-1 mt-3 ml-2" style="color: white">My Profile</h3><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 sidenav">
+                <i class="fa fa-user pb-3" style="display: block;font-size: 100px;text-align: center;color: white">
+                </i>
+                <a href="#null" onclick="redirectTo();"><h4 class="p-3">Dashboard</h4></a>
+                <a href="~/Employee/ApplyForLeave"><h4 class="p-3">Apply for leave</h4></a>
+                <a href="~/Login/Login"><h4 class="p-3">Sign Out</h4></a>
+            </div>
+            <div class="col-md-10 pt-5 pb-5">
+                <form name="myForm">
+                    <div class="row" style="margin-top: 5rem">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" style="font-size: 14px;" for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Your Name" ng-required='true' name="name" ng-model="profile.Name" only-alphabets>
+                            <span style="color: red" ng-show='myForm.name.$touched && myForm.name.$error.required'>Name is required</span>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" style="font-size: 14px;" for="name">Gender</label>
+                            <select class="form-control mb-2" id="usertype" name="gender" ng-required='true' ng-model='profile.Gender'>
+                                <option value="">Select Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                            <span style="color: red" ng-show='myForm.gender.$touched && myForm.gender.$error.required'>Gender is required</span>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" style="font-size: 14px;" for="mobile">Mobile</label>
+                            <input type="text" class="form-control" id="mobile" placeholder="Enter Your Mobile No" ng-required='true' name="mobile" ng-model="profile.Mobile" ng-minlength='10' numbers-only limit-to='10'>
+                            <span style="color: red" ng-show='myForm.mobile.$touched && myForm.mobile.$error.required'>Mobile is required</span>
+                            <span style="color: red" ng-show='myForm.mobile.$error.minlength'>Mobile no. is not valid</span>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" style="font-size: 14px;" for="email">Email</label>
+                            <input type="text" class="form-control mb-2" id="email" placeholder="Enter Your Email" ng-required='true' name="email" ng-model="profile.Email" @*ng-pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/"*@>
+                            <span style="color: red" ng-show='myForm.email.$touched && myForm.email.$error.required'>
+                                Email is required
+                            </span>
+                            <span style="color: red" ng-show='myForm.email.$touched && myForm.email.$error.pattern'>
+                                Email is not valid
+                            </span>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" style="font-size: 14px;" for="dateofbirth">Date of Birth</label>
+                            <div class="form-group">
+                                <div class="input-group" id="datetimepicker1">
+
+                                    <input type="text" class="form-control" id="dateofbirth" name="dateofbirth" placeholder="Date Of Birth" ng-required='true' ng-model='profile.Dateofbirth' uib-datepicker-popup="{{format}}" is-open="showdp" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" popup-placement="bottom-left" show-button-bar='false'>
+
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar fa-2x" ng-click="open($event)"></span>
+                                    </span>
+                                </div>
+                                <span style="color: red" ng-show='myForm.dateofbirth.$touched && myForm.dateofbirth.$error.required'>Date Of Birth is required</span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" style="font-size: 14px;" for="address">Address</label>
+                            <input type="text" class="form-control mb-2" id="address" placeholder="Enter Your Address" ng-required='true' name="address" ng-model="profile.Address">
+                            <span style="color: red" ng-show='myForm.address.$touched && myForm.address.$error.required'>Address is required</span>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" style="font-size: 14px;" for="state">State</label>
+                            <select class="form-control" id="state" name="state" ng-required='true' ng-model='profile.State'>
+                                <option value="">Select State</option>
+                                <option>Gujarat</option>
+                                <option>Maharastra</option>
+                                <option>Madhya Pradesh</option>
+                                <option>Rajasthan</option>
+                            </select>
+                            <span style="color: red" ng-show='myForm.state.$touched && myForm.state.$error.required'>State is required</span>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4 m-2 p-2">
+                            <label class="ml-1 mb-0" style="font-size: 14px;" for="name">City</label>
+                            <select class="form-control" id="city" name="city" ng-required='true' ng-model='profile.City'>
+                                <option value="">Select City</option>>
+                                <option>Rajkot</option>
+                                <option>Ahmedabad</option>
+                                <option>Porbander</option>
+                                <option>Jamnagar</option>
+                            </select>
+                            <span style="color: red" ng-show='myForm.city.$touched && myForm.city.$error.required'>City is required</span>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row" style="margin-bottom: 5rem">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-2 m-2 p-2 text-center">
+                            <button class="btn btn-success" type="submit" ng-disabled="myForm.$invalid" ng-click="UpdateProfileDetails()">Update</button>
+                        </div>
+                        <div class="col-md-5"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

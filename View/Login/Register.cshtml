@@ -1,0 +1,127 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Login_Design.css" rel="stylesheet" />
+    
+
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <h1 style="text-align: center;margin-top: 50px;">Welcome to Leave Management System</h1>
+    <div class="container my-container">
+        <form name="myForm">
+
+            <input type="hidden" id="id" name="id" ng-model='register.EmpId' />
+
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model='register.name' ng-required='true' only-alphabets>
+                <span style="color: red" ng-show='myForm.name.$touched && myForm.name.$error.required'>Name is required</span>
+            </div>
+
+            <div class="form-group">
+                <label for="usertype">UserType</label>
+                <select class="form-control" id="usertype" name="usertype" ng-model='register.usertype' ng-required='true'>
+                    <option value="">Select UserType</option>
+                    <option>Employee</option>
+                    <option>Admin</option>
+                </select>
+                <span style="color: red" ng-show='myForm.usertype.$touched && myForm.usertype.$error.required'>Usertype is required</span>
+            </div>
+
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-required='true' ng-model='register.username'>
+                <span style="color: red" ng-show='myForm.username.$touched && myForm.username.$error.required'>Username is required</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password" ng-required='true' ng-model='register.password'>
+                <span style="color: red" ng-show='myForm.password.$touched && myForm.password.$error.required'>Password is required</span>
+            </div>
+
+            <div class="form-group">
+                <label for="Gender">Gender</label>
+                <select class="form-control" id="gender" name="gender" ng-required='true' ng-model='register.gender'>
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                <span style="color: red" ng-show='myForm.gender.$touched && myForm.gender.$error.required'>Gender is required</span>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input type="text" class="form-control" id="mobile" placeholder="Mobile" name="mobile" ng-required='true' ng-minlength='10' ng-model='register.mobile' numbers-only limit-to='10'>
+                <span style="color: red" ng-show='myForm.mobile.$touched && myForm.mobile.$error.required'>Mobile no. is required</span>
+                <span style="color: red" ng-show='myForm.mobile.$error.minlength'>Mobile no. is not valid</span>
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" name="email" ng-required='true' ng-model='register.email' @*ng-pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/"*@>
+                <span style="color: red" ng-show='myForm.email.$touched && myForm.email.$error.required'>
+                    Email is required
+                </span>
+                <span style="color: red" ng-show='myForm.email.$touched && myForm.email.$error.pattern'>
+                    Email is not valid
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="dateOfbirth">Date Of Birth</label>
+                <div class="input-group" id="datetimepicker1">
+
+                    <input type="text" class="form-control" id="dateofbirth" name="dateofbirth" placeholder="Date Of Birth" ng-required='true' ng-model='register.dateofbirth' uib-datepicker-popup="{{format}}" is-open="showdp" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" popup-placement="bottom-left" show-button-bar='false'>
+
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar fa-2x" ng-click="open($event)"></span>
+                    </span>
+                </div>
+                <span style="color: red" ng-show='myForm.dateofbirth.$touched && myForm.dateofbirth.$error.required'>Date Of Birth is required</span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="Address" name="address" ng-required='true' ng-model='register.address'>
+                <span style="color: red" ng-show='myForm.address.$touched && myForm.address.$error.required'>Address is required</span>
+            </div>
+
+            <div class="form-group">
+                <label for="City">City</label>
+                <select class="form-control" id="city" name="city" ng-required='true' ng-model='register.city'>
+                    <option value="">Select City</option>
+                    <option>Rajkot</option>
+                    <option>Ahmedabad</option>
+                    <option>Porbander</option>
+                    <option>Jamnagar</option>
+                </select>
+                <span style="color: red" ng-show='myForm.city.$touched && myForm.city.$error.required'>City is required</span>
+            </div>
+
+            <div class="form-group">
+                <label for="State">State</label>
+                <select class="form-control" id="state" name="state" ng-required="true" ng-model="register.state">
+                    <option value="">Select State</option>
+                    <option>Gujarat</option>
+                    <option>Maharastra</option>
+                    <option>Madhya Pradesh</option>
+                    <option>Rajasthan</option>
+                </select>
+                <span style="color: red" ng-show='myForm.state.$touched && myForm.state.$error.required'>State is required</span>
+            </div>
+
+            <div class="text-center" style="margin-top: 35px;">
+                <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="Register()">Register</button>
+            </div>
+
+
+        </form>
+</div>
+</body>
+</html>
