@@ -1,0 +1,54 @@
+﻿html, body {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.my-container {
+    height: 100vh;
+}
+
+.mycol .my-user {
+    color: white;
+    display: block;
+    font-size: 100px;
+    text-align: center;
+    margin-top: 30px;
+    
+}
+
+.mycol2 label {
+    margin-top: 14px;
+    padding: 5px;
+    margin-left: 20px;
+    font-size: 20px;
+    color: white
+}
+
+.mycol2 {
+    background-color: #808e9b;
+}
+
+.sidenav a {
+    text-align: center;
+    color: #c7ecee;
+    text-decoration: none;
+}
+
+.sidenav a:hover {
+   color: #e0e0e0;
+}
+
+.sidenav {
+    background-color: #57606f;
+}
+
+/*.my-row {
+    min-height: 80%
+}*/
+
+.my-table th td {
+    text-align: center;
+}

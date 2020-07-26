@@ -1,0 +1,31 @@
+﻿html, body {
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 767px) {
+    body {
+        overflow-y: hidden;
+    }
+}
+
+.mycol2 {
+    background-color: #808e9b;
+}
+
+.sidenav a {
+    text-align: center;
+    color: #c7ecee;
+    text-decoration: none;
+}
+
+    .sidenav a:hover {
+        color: #e0e0e0;
+    }
+
+.sidenav {
+    background-color: #57606f;
+    padding-bottom: 10px;
+}
