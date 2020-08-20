@@ -15,7 +15,7 @@
         }
     </script>
 </head>
-<body ng-app='myApp' ng-controller='myCtrl'>
+<body ng-app='myApp' ng-controller='myCtrl' ng-init="GetMasterData()">
     <div class="container-fluid my-container h-100">
         <div class="row">
             <div class="col-md-2" style="background-color: #57606f">
@@ -45,10 +45,8 @@
                         <div class="col-md-4 m-2 p-2">
                             <!-- <input type="text" class="form-control form-control-lg" id="Leavetype" placeholder="Leave Type" ng-required='true' name="Leavetype" ng-model="Leavetype">
                              -->
-                            <select class="form-control form-control-lg" id="Leavetype" name="Leavetype" ng-required='true' ng-model='leave.leavetype'>
-                                <option value="">Select Leave Type</option>>
-                                <option>Half Leave</option>
-                                <option>Full Leave</option>
+                            <select class="form-control form-control-lg" id="Leavetype" name="Leavetype" ng-required='true' ng-model='leave.leavetype' ng-options="user.Value as user.Value for user in Master | filter:{Key:'EmployeeLeave'}">
+                                <option value="">Select Leave Type</option>
                             </select>
                             <span style="color: red" ng-show='myForm.Leavetype.$touched && myForm.Leavetype.$error.required'>Leave Type is required</span>
                         </div>

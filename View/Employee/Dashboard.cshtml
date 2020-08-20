@@ -21,9 +21,9 @@
                 <i class="fa fa-user my-user"></i>
             </div>
 
-            
+
             <div class="col-md-10 mycol2">
-                <input class="form-control float-right" style="width: 200px;margin-top: 10px;border-radius:1rem" type="search" placeholder="Search" aria-label="Search" ng-model="search">
+                <input class="form-control float-right search"  type="search" placeholder="Search" aria-label="Search" ng-model="search">
                 <label>Name: {{register.name}}</label><br>
                 <label>Email-Id: {{register.email}} </label><br>
                 <label>Mobile: {{register.mobile}} </label><br>
@@ -32,25 +32,39 @@
         <div class="row h-100">
             <div class="col-md-2 sidenav">
                 <a href="~/Employee/EmployeeProfile"><h4 style="padding: 20px">My Profile</h4></a>
-                <a href="~/Employee/ApplyForLeave"><h4 style="padding: 20px">Apply for leave</h4></a>                
-                <a href="~/Login/Login"><h4 style="padding: 20px">Sign Out</h4></a>
+                <a href="~/Employee/ApplyForLeave"><h4 style="padding: 20px">Apply for leave</h4></a>
+                <a href="~/Login/Logout"><h4 style="padding: 20px">Sign Out</h4></a>
             </div>
             <div class="col-md-10">
                 <table class="table">
                     <thead>
                         <tr style="text-align: center;">
-                            <th scope="col">Leave Type</th>
-                            <th scope="col">Leave Start</th>
-                            <th scope="col">Leave End</th>
-                            <th scope="col">Leave Days</th>
-                            <th scope="col">Leave Desc</th>
-                            <th scope="col">Leave Status</th>
-                            <th scope="col">Leave Balance</th>
+                            <th scope="col" ng-click="sortBy('leavetype')">
+                                Leave Type <span ng-show="sortColumn=='leavetype'"></span>
+                            </th>
+                            <th scope="col" ng-click="sortBy('startdate')">
+                                Leave Start <span ng-show="sortColumn=='startdate'"></span>
+                            </th>
+                            <th scope="col" ng-click="sortBy('enddate')">
+                                Leave End <span ng-show="sortColumn=='enddate'"></span>
+                            </th>
+                            <th scope="col" ng-click="sortBy('leaveduration')">
+                                Leave Days <span ng-show="sortColumn=='leaveduration'"></span>
+                            </th>
+                            <th scope="col" ng-click="sortBy('leavedescription')">
+                                Leave Desc <span ng-show="sortColumn=='leavedescription'"></span>
+                            </th>
+                            <th scope="col" ng-click="sortBy('leavestatus')">
+                                Leave Status <span ng-show="sortColumn=='leavestatus'"></span>
+                            </th>
+                            <th scope="col" ng-click="sortBy('leavebalance')">
+                                Leave Balance <span ng-show="sortColumn=='leavebalance'"></span>
+                            </th>
                             <th scope="col">Cancel Request</th>
                         </tr>
                     </thead>
                     <tbody style="text-align: center">
-                        <tr ng-repeat="l in leave | filter : search">
+                        <tr ng-repeat="l in LeaveData | filter : search | orderBy: sortColumn: reverse | limitTo: itemsPerPage: (currentPage - 1) * itemsPerPage">
                             <td>{{l.leavetype}}</td>
                             <td>{{l.startdate.slice(6,-2) | date : 'dd-MM-yyyy' }}</td>
                             <td>{{l.enddate.slice(6,-2) | date : "dd-MM-yyyy" }}</td>
@@ -62,6 +76,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <uib-pagination total-items="(LeaveData | filter : search).length" items-per-page="itemsPerPage" ng-model="currentPage" max-size="5" boundary-links="true"></uib-pagination>
             </div>
         </div>
     </div>

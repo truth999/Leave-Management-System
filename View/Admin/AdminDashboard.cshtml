@@ -20,7 +20,7 @@
                 <i class="fa fa-user my-user"></i>
             </div>
             <div class="col-md-10 mycol2">
-                <input class="form-control float-right" style="width: 200px;margin-top: 10px;border-radius:1rem" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control float-right search"  type="search" placeholder="Search" aria-label="Search">
                 <label>Name: {{register.name}}</label><br>
                 <label>Email-Id: {{register.email}} </label><br>
                 <label>Mobile: {{register.mobile}} </label><br>
@@ -59,7 +59,7 @@
                             <td>{{a.leavedescription}}</td>
                             <td>{{a.leavestatus}}</td>
                             <td>{{a.leavebalance}}</td>
-                            <td><button type="button" ng-click="ApproveLeave(a)" class="fa fa-check" style="color: blue;margin-right: 20px;"></button><button type="button" class="fa fa-times" ng-click="RejectLeave(a)" style="color: red"></button></td>
+                            <td><button type="button" ng-click="ApproveLeave(a)" class="fa fa-check approve"></button><button type="button" class="fa fa-times" ng-click="RejectLeave(a)" style="color: red"></button></td>
                         </tr>
                         
                     </tbody>

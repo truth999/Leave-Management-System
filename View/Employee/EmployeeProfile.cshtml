@@ -40,14 +40,14 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-4 m-2 p-2">
                             <label class="ml-1 mb-0" style="font-size: 14px;" for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter Your Name" ng-required='true' name="name" ng-model="profile.Name" only-alphabets>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Your Name" ng-required='true' name="name" ng-model="profile.name" only-alphabets>
                             <span style="color: red" ng-show='myForm.name.$touched && myForm.name.$error.required'>Name is required</span>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-1"></div>
                         <div class="col-md-4 m-2 p-2">
                             <label class="ml-1 mb-0" style="font-size: 14px;" for="name">Gender</label>
-                            <select class="form-control mb-2" id="usertype" name="gender" ng-required='true' ng-model='profile.Gender'>
+                            <select class="form-control mb-2" id="usertype" name="gender" ng-required='true' ng-model='profile.gender'>
                                 <option value="">Select Gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -60,7 +60,7 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-4 m-2 p-2">
                             <label class="ml-1 mb-0" style="font-size: 14px;" for="mobile">Mobile</label>
-                            <input type="text" class="form-control" id="mobile" placeholder="Enter Your Mobile No" ng-required='true' name="mobile" ng-model="profile.Mobile" ng-minlength='10' numbers-only limit-to='10'>
+                            <input type="text" class="form-control" id="mobile" placeholder="Enter Your Mobile No" ng-required='true' name="mobile" ng-model="profile.mobile" ng-minlength='10' numbers-only limit-to='10'>
                             <span style="color: red" ng-show='myForm.mobile.$touched && myForm.mobile.$error.required'>Mobile is required</span>
                             <span style="color: red" ng-show='myForm.mobile.$error.minlength'>Mobile no. is not valid</span>
                         </div>
@@ -68,7 +68,7 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-4 m-2 p-2">
                             <label class="ml-1 mb-0" style="font-size: 14px;" for="email">Email</label>
-                            <input type="text" class="form-control mb-2" id="email" placeholder="Enter Your Email" ng-required='true' name="email" ng-model="profile.Email" @*ng-pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/"*@>
+                            <input type="text" class="form-control mb-2" id="email" placeholder="Enter Your Email" ng-required='true' name="email" ng-model="profile.email" ng-pattern="/^[^\s]+[^\s]+\.[^\s]{2,}$/">
                             <span style="color: red" ng-show='myForm.email.$touched && myForm.email.$error.required'>
                                 Email is required
                             </span>
@@ -85,7 +85,7 @@
                             <div class="form-group">
                                 <div class="input-group" id="datetimepicker1">
 
-                                    <input type="text" class="form-control" id="dateofbirth" name="dateofbirth" placeholder="Date Of Birth" ng-required='true' ng-model='profile.Dateofbirth' uib-datepicker-popup="{{format}}" is-open="showdp" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" popup-placement="bottom-left" show-button-bar='false'>
+                                    <input type="text" class="form-control" id="dateofbirth" name="dateofbirth" placeholder="Date Of Birth" ng-required='true' ng-model='profile.dateofbirth' uib-datepicker-popup="{{format}}" is-open="showdp" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" popup-placement="bottom-left" show-button-bar='false'>
 
                                     <span class="input-group-addon">
                                         <span class="fa fa-calendar fa-2x" ng-click="open($event)"></span>
@@ -99,7 +99,7 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-4 m-2 p-2">
                             <label class="ml-1 mb-0" style="font-size: 14px;" for="address">Address</label>
-                            <input type="text" class="form-control mb-2" id="address" placeholder="Enter Your Address" ng-required='true' name="address" ng-model="profile.Address">
+                            <input type="text" class="form-control mb-2" id="address" placeholder="Enter Your Address" ng-required='true' name="address" ng-model="profile.address">
                             <span style="color: red" ng-show='myForm.address.$touched && myForm.address.$error.required'>Address is required</span>
                         </div>
                         <div class="col-md-1"></div>
@@ -108,7 +108,7 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-4 m-2 p-2">
                             <label class="ml-1 mb-0" style="font-size: 14px;" for="state">State</label>
-                            <select class="form-control" id="state" name="state" ng-required='true' ng-model='profile.State'>
+                            <select class="form-control" id="state" name="state" ng-required='true' ng-model='profile.state'>
                                 <option value="">Select State</option>
                                 <option>Gujarat</option>
                                 <option>Maharastra</option>
@@ -121,7 +121,7 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-4 m-2 p-2">
                             <label class="ml-1 mb-0" style="font-size: 14px;" for="name">City</label>
-                            <select class="form-control" id="city" name="city" ng-required='true' ng-model='profile.City'>
+                            <select class="form-control" id="city" name="city" ng-required='true' ng-model='profile.city'>
                                 <option value="">Select City</option>>
                                 <option>Rajkot</option>
                                 <option>Ahmedabad</option>

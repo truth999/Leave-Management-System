@@ -8,8 +8,8 @@
     
 
 </head>
-<body ng-app="myApp" ng-controller="myCtrl">
-    <h1 style="text-align: center;margin-top: 50px;">Welcome to Leave Management System</h1>
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetMasterData()">
+    <h1 class="head">Welcome to Leave Management System</h1>
     <div class="container my-container">
         <form name="myForm">
 
@@ -23,10 +23,8 @@
 
             <div class="form-group">
                 <label for="usertype">UserType</label>
-                <select class="form-control" id="usertype" name="usertype" ng-model='register.usertype' ng-required='true'>
+                <select class="form-control" id="usertype" name="usertype" ng-model='register.usertype' ng-required='true' ng-options="user.Value as user.Value for user in Master | filter:{Key:'UserType'}">
                     <option value="">Select UserType</option>
-                    <option>Employee</option>
-                    <option>Admin</option>
                 </select>
                 <span style="color: red" ng-show='myForm.usertype.$touched && myForm.usertype.$error.required'>Usertype is required</span>
             </div>
@@ -45,10 +43,8 @@
 
             <div class="form-group">
                 <label for="Gender">Gender</label>
-                <select class="form-control" id="gender" name="gender" ng-required='true' ng-model='register.gender'>
+                <select class="form-control" id="gender" name="gender" ng-required='true' ng-model='register.gender' ng-options="user.Value as user.Value for user in Master | filter:{Key:'EmployeeGender'}">
                     <option value="">Select Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
                 </select>
                 <span style="color: red" ng-show='myForm.gender.$touched && myForm.gender.$error.required'>Gender is required</span>
             </div>
@@ -62,7 +58,7 @@
 
             <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" name="email" ng-required='true' ng-model='register.email' @*ng-pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/"*@>
+                <input type="email" class="form-control" id="email" placeholder="Email" name="email" ng-required='true' ng-model='register.email' ng-pattern="/^[^\s]+[^\s]+\.[^\s]{2,}$/">
                 <span style="color: red" ng-show='myForm.email.$touched && myForm.email.$error.required'>
                     Email is required
                 </span>
@@ -82,6 +78,7 @@
                     </span>
                 </div>
                 <span style="color: red" ng-show='myForm.dateofbirth.$touched && myForm.dateofbirth.$error.required'>Date Of Birth is required</span>
+
             </div>
 
 
@@ -93,27 +90,19 @@
             </div>
 
             <div class="form-group">
-                <label for="City">City</label>
-                <select class="form-control" id="city" name="city" ng-required='true' ng-model='register.city'>
-                    <option value="">Select City</option>
-                    <option>Rajkot</option>
-                    <option>Ahmedabad</option>
-                    <option>Porbander</option>
-                    <option>Jamnagar</option>
-                </select>
-                <span style="color: red" ng-show='myForm.city.$touched && myForm.city.$error.required'>City is required</span>
-            </div>
+            <label for="State">State</label>
+            <select class="form-control" id="state" name="state" ng-required="true" ng-model="register.state" ng-options="user.Value as user.Value for user in Master | filter:{Key:'EmployeeState'}">
+                <option value="">Select State</option>
+            </select>
+            <span style="color: red" ng-show='myForm.state.$touched && myForm.state.$error.required'>State is required</span>
+        </div>
 
             <div class="form-group">
-                <label for="State">State</label>
-                <select class="form-control" id="state" name="state" ng-required="true" ng-model="register.state">
-                    <option value="">Select State</option>
-                    <option>Gujarat</option>
-                    <option>Maharastra</option>
-                    <option>Madhya Pradesh</option>
-                    <option>Rajasthan</option>
+                <label for="City">City</label>
+                <select class="form-control" id="city" name="city" ng-required='true' ng-model='register.city' ng-options="user.Value as user.Value for user in Master | filter:{Key:'EmployeeCity'}">
+                    <option value="">Select City</option>
                 </select>
-                <span style="color: red" ng-show='myForm.state.$touched && myForm.state.$error.required'>State is required</span>
+                <span style="color: red" ng-show='myForm.city.$touched && myForm.city.$error.required'>City is required</span>
             </div>
 
             <div class="text-center" style="margin-top: 35px;">
@@ -122,6 +111,7 @@
 
 
         </form>
+        
 </div>
 </body>
 </html>

@@ -23,13 +23,13 @@
 
             </div>
             <div class="col-md-10 mycol2">
-                <input class="form-control float-right" style="width: 200px;margin-top: 10px;border-radius:1rem" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control float-right search"  type="search" placeholder="Search" aria-label="Search" ng-model="search">
                 <h3 class="p-1 mt-3 ml-2" style="color: white">History Table</h3><br>
             </div>
         </div>
         <div class="row h-100">
             <div class="col-md-2 sidenav">
-                <i class="fa fa-user pb-3" style="display: block;font-size: 100px;text-align: center;color: white">
+                <i class="fa fa-user pb-3 user">
                 </i>
                 <a href="~/Admin/EmployeeDetails"><h4 class="p-3">Employee List</h4></a>
                 <a href="#null" onclick="redirectTo();"><h4 class="p-3">Dashboard</h4></a>
@@ -51,7 +51,7 @@
                         </tr>
                     </thead>
                     <tbody style="text-align: center">
-                        <tr ng-repeat="h in History">
+                        <tr ng-repeat="h in History | filter : search | limitTo: itemsPerPage: (currentPage - 1) * itemsPerPage"">
                             <td>{{h.empid}}</td>
                             <td>{{h.name}}</td>
                             <td>{{h.leavetype}}</td>
@@ -60,11 +60,12 @@
                             <td>{{h.leaveduration}}</td>
                             <td>{{h.leavedescription}}</td>
                             <td>{{h.leavestatus}}</td>
-                            <td>{{h.leavebalance}}</td>                           
+                            <td>{{h.leavebalance}}</td>
                         </tr>
 
                     </tbody>
                 </table>
+                <uib-pagination total-items="(History | filter : search).length" items-per-page="itemsPerPage" ng-model="currentPage" max-size="5" boundary-links="true"></uib-pagination>
             </div>
         </div>
     </div>

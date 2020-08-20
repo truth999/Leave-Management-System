@@ -23,7 +23,7 @@
 
             </div>
             <div class="col-md-10 mycol2">
-                <input class="form-control float-right" style="width: 200px;margin-top: 10px;border-radius:1rem" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control float-right search" type="search" placeholder="Search" aria-label="Search">
                 <h3 class="p-1 mt-3 ml-2" style="color: white">Employee Table</h3><br>
             </div>
         </div>
@@ -64,7 +64,7 @@
                             <td>{{Emp.address}}</td>
                             <td>{{Emp.city}}</td>
                             <td>{{Emp.state}}</td>
-                            <td><button type="button" class="fa fa-ban" ng-click="BlockUser(Emp)" style="color:red;margin-right: 20px" ></button><button type="button" class="fa fa-unlock" style="color: blue" ng-click="UnblockUser(Emp)"></button></td>
+                            <td><button type="button" class="fa fa-ban block" ng-click="BlockUser(Emp)" ></button><button type="button" class="fa fa-unlock" style="color: blue" ng-click="UnblockUser(Emp)"></button></td>
                         </tr>
 
                     </tbody>

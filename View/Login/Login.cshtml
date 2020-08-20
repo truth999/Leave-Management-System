@@ -9,7 +9,7 @@
     @*<script src="~/Scripts/Login_Validate.js"></script>*@
 </head>
 <body ng-app="myApp" ng-controller="myCtrl">
-    <h1 style="text-align: center;margin-top: 50px;">Welcome to Leave Management System</h1>
+    <h1 class="head">Welcome to Leave Management System</h1>
     <div class="container my-container">
         <form name="myForm">
             <div class="form-group">
@@ -52,7 +52,7 @@
                         </div>
                         <div class="modal-body">
                             <label for="email">Registered Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter Your Email" ng-required='true' name="email" ng-model="register.email">
+                            <input type="email" class="form-control" id="email" placeholder="Enter Your Email" ng-required='true' name="email" ng-model="register.email" ng-pattern="/^[^\s]+[^\s]+\.[^\s]{2,}$/">
                             @*<span style="color: red" ng-show='ForgetForm.email.$touched && ForgetForm.email.$error.required'>Email is not valid</span>*@
                         </div>
                         <div class="modal-footer">
