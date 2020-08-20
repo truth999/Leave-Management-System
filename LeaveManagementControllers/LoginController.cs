@@ -6,7 +6,9 @@ using System.Web.Mvc;
 using System.Net.Http;
 using LeaveManagementModels;
 using LeaveManagementManager;
-
+using System.Net;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Leave_Management.Controllers
 {
@@ -23,25 +25,29 @@ namespace Leave_Management.Controllers
             return View();
         }
 
-        [Route("Register")]
+        
         public ActionResult Register()
         {
             return View();
         }
 
-        //[HttpPost] 
-        //[Route("RegisterEmp")]
-        //public void RegisterEmp(string name)
-        // {
-        //     RegisterManager registerManager = new RegisterManager();
-        //     registerManager.ManageRegister(name);
-        // }
-
         [HttpPost]      
         public void RegisterEmployee(RegisterModel register)
         {
-            RegisterManager registerManager = new RegisterManager();
-            registerManager.ManageRegister(register);
+            register.created_datetime = DateTime.Now;
+            var request = (HttpWebRequest)WebRequest.Create("http://localhost:50404/api/LoginWebApi/RegisterEmployee");
+            request.Method = "Post";
+            request.ContentType = "application/json";
+
+            string result = JsonConvert.SerializeObject(register);
+
+            var streamWriter = new StreamWriter(request.GetRequestStream());
+            streamWriter.Write(result);
+            streamWriter.Close();
+
+            var response = (HttpWebResponse)request.GetResponse();
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
         }
 
         [HttpPost]
@@ -50,20 +56,9 @@ namespace Leave_Management.Controllers
             LoginManager loginManager = new LoginManager();
             loginManager.ManageLogin(login);
             string message = loginManager.ManageLogin(login);
+            Session["usertype"] = login.usertype;
 
-            //if(message == "Login success")
-            //{
-            //    RedirectToAction("Dashboard","Dashboard");
-            //}
-            //else
-            //{
-            //    ViewBag.ErrorMsg = "Wrong username or password";
-            //    ViewBag{ "ErrorMsg"}
-            //    //return View("Login");
-            //}
             return Json(message, JsonRequestBehavior.AllowGet);
-
-
         }
 
         public void ForgetPassword(RegisterModel registerModel)
@@ -71,6 +66,12 @@ namespace Leave_Management.Controllers
             string email = registerModel.email;
             RegisterManager registerManager = new RegisterManager();
             registerManager.ForgetPassword(email);
+        }
+
+        public ActionResult Logout()
+        {
+            Session["usertype"] = null;
+            return RedirectToAction("Login");
         }
     }
 }

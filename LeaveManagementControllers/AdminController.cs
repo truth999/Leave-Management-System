@@ -10,6 +10,7 @@ namespace Leave_Management.Controllers
 {
     public class AdminController : Controller
     {
+        [Filters.AuthorizeUser]
         public ActionResult AdminDashboard(string username)
         {
             if (!string.IsNullOrEmpty(username))
@@ -20,12 +21,14 @@ namespace Leave_Management.Controllers
             return View();
         }
 
+        [Filters.AuthorizeUser]
         public ActionResult EmployeeDetails()
         {
             ViewBag.username = Session["username"];
             return View();
         }
 
+        [Filters.AuthorizeUser]
         public ActionResult HistoryDetails()
         {
             ViewBag.username = Session["username"];
