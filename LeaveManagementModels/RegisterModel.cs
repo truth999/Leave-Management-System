@@ -16,12 +16,14 @@ namespace LeaveManagementModels
         public string address { get; set; }
         public string city { get; set; }
         public string state { get; set; }
+        public DateTime created_datetime { get; set; }
+        public DateTime updated_datetime { get; set; }
     }
 
-    public class LoginModel
+    public class LoginModel : RegisterModel
     {
-        public string username { get; set; }
-        public string password { get; set; }
-        public string usertype { get; set; }
+    //    public string username { get; set; }
+    //    public string password { get; set; }
+    //    public string usertype { get; set; }
     }
 }
