@@ -1,4 +1,4 @@
-﻿var app = angular.module("myApp", ['ui.bootstrap']);
+﻿var app = angular.module("myApp", ['ui.bootstrap','myAppDirectives']);
 //app.run(function ($rootScope){ $rootScope.register = {} });
 
 app.controller("myCtrl", function ($scope,$http,$filter) {
