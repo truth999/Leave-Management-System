@@ -1,0 +1,96 @@
+7/27/2020 10:29:23 AM:Leave Scheduler
+7/27/2020 10:29:23 AM:Leave Scheduler Started
+7/27/2020 10:30:20 AM:Event OnStop
+7/27/2020 10:30:20 AM:ShutDown Service
+7/27/2020 10:30:20 AM:Service Shutdown Successfully
+7/27/2020 10:32:07 AM:Leave Scheduler
+7/27/2020 10:32:07 AM:Leave Scheduler Started
+7/27/2020 10:32:51 AM:Event OnStop
+7/27/2020 10:32:51 AM:ShutDown Service
+7/27/2020 10:32:51 AM:Service Shutdown Successfully
+7/27/2020 10:36:09 AM:Leave Scheduler
+7/27/2020 10:36:09 AM:Leave Scheduler Started
+7/27/2020 10:37:50 AM:Event OnStop
+7/27/2020 10:37:50 AM:ShutDown Service
+7/27/2020 10:37:50 AM:Service Shutdown Successfully
+7/27/2020 10:49:48 AM:Leave Scheduler
+7/27/2020 10:49:48 AM:Leave Scheduler Started
+7/27/2020 10:50:08 AM:Event OnStop
+7/27/2020 10:50:08 AM:ShutDown Service
+7/27/2020 10:50:08 AM:Service Shutdown Successfully
+7/27/2020 10:55:45 AM:Leave Scheduler
+7/27/2020 10:55:45 AM:Leave Scheduler Started
+7/27/2020 10:55:55 AM:Timer Ticked
+7/27/2020 10:55:55 AM:28
+7/27/2020 10:55:55 AM:Leave Balance Incremented
+7/27/2020 10:55:55 AM:Leave Scheduler Done
+7/27/2020 10:56:05 AM:Timer Ticked
+7/27/2020 10:56:17 AM:Timer Ticked
+7/27/2020 10:56:22 AM:28
+7/27/2020 10:56:23 AM:28
+7/27/2020 10:56:28 AM:Leave Balance Incremented
+7/27/2020 10:56:28 AM:Timer Ticked
+7/27/2020 10:56:36 AM:Leave Scheduler Done
+7/27/2020 10:56:36 AM:28
+7/27/2020 10:56:41 AM:Timer Ticked
+7/27/2020 10:56:41 AM:28
+7/27/2020 10:56:41 AM:Leave Balance Incremented
+7/27/2020 10:56:41 AM:Leave Scheduler Done
+7/27/2020 10:56:49 AM:Event OnStop
+7/27/2020 10:56:49 AM:ShutDown Service
+7/27/2020 10:56:49 AM:Service Shutdown Successfully
+7/27/2020 11:00:01 AM:Leave Scheduler
+7/27/2020 11:00:01 AM:Leave Scheduler Started
+7/27/2020 11:01:01 AM:Timer Ticked
+7/27/2020 11:01:01 AM:28
+7/27/2020 11:01:01 AM:API calling
+7/27/2020 11:01:04 AM:Event OnStop
+7/27/2020 11:01:04 AM:ShutDown Service
+7/27/2020 11:01:04 AM:Service Shutdown Successfully
+7/27/2020 11:02:52 AM:Leave Scheduler
+7/27/2020 11:02:52 AM:Leave Scheduler Started
+7/27/2020 11:03:52 AM:Timer Ticked
+7/27/2020 11:03:52 AM:28
+7/27/2020 11:03:52 AM:API calling
+7/27/2020 11:03:57 AM:Event OnStop
+7/27/2020 11:03:57 AM:ShutDown Service
+7/27/2020 11:03:57 AM:Service Shutdown Successfully
+7/27/2020 11:05:20 AM:Leave Scheduler
+7/27/2020 11:05:20 AM:Leave Scheduler Started
+7/27/2020 11:06:20 AM:Timer Ticked
+7/27/2020 11:06:26 AM:28
+7/27/2020 11:06:27 AM:API calling
+7/27/2020 11:07:10 AM:Event OnStop
+7/27/2020 11:07:10 AM:ShutDown Service
+7/27/2020 11:07:10 AM:Service Shutdown Successfully
+7/27/2020 11:10:06 AM:Leave Scheduler
+7/27/2020 11:10:06 AM:Leave Scheduler Started
+7/27/2020 11:11:06 AM:Timer Ticked
+7/27/2020 11:11:06 AM:28
+7/27/2020 11:11:06 AM:API calling
+7/27/2020 11:11:30 AM:Event OnStop
+7/27/2020 11:11:30 AM:ShutDown Service
+7/27/2020 11:11:30 AM:Service Shutdown Successfully
+7/27/2020 11:13:00 AM:Leave Scheduler
+7/27/2020 11:13:00 AM:Leave Scheduler Started
+7/27/2020 11:14:00 AM:Timer Ticked
+7/27/2020 11:14:04 AM:28
+7/27/2020 11:14:04 AM:API calling
+7/27/2020 11:14:09 AM:Event OnStop
+7/27/2020 11:14:09 AM:ShutDown Service
+7/27/2020 11:14:09 AM:Service Shutdown Successfully
+7/27/2020 11:22:41 AM:Leave Scheduler
+7/27/2020 11:22:41 AM:Leave Scheduler Started
+7/27/2020 11:23:16 AM:Event OnStop
+7/27/2020 11:23:16 AM:ShutDown Service
+7/27/2020 11:23:16 AM:Service Shutdown Successfully
+7/27/2020 11:23:35 AM:Leave Scheduler
+7/27/2020 11:23:35 AM:Leave Scheduler Started
+7/27/2020 11:24:35 AM:Timer Ticked
+7/27/2020 11:24:39 AM:28
+7/27/2020 11:24:40 AM:API calling
+7/27/2020 11:24:57 AM:Leave Balance Incremented
+7/27/2020 11:25:00 AM:Leave Scheduler Done
+7/27/2020 11:25:10 AM:Event OnStop
+7/27/2020 11:25:10 AM:ShutDown Service
+7/27/2020 11:25:10 AM:Service Shutdown Successfully
