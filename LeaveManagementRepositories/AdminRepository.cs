@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Text;
 using LeaveManagementModels;
@@ -9,12 +10,14 @@ namespace LeaveManagementRepository
 {
     public class AdminRepository
     {
-        string str = "Data Source=(DESCRIPTION =" + "(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))" + "(CONNECT_DATA =" + "(SERVER = DEDICATED)" + "(SERVICE_NAME = ORCL)));" + "User Id= system;Password=system;";
+        //string str = "Data Source=(DESCRIPTION =" + "(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))" + "(CONNECT_DATA =" + "(SERVER = DEDICATED)" + "(SERVICE_NAME = ORCL)));" + "User Id= system;Password=system;";
+
+        string connStr = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
 
         public List<AdminLeaveModel> GetAdminLeaveDetails()
         {
             List<AdminLeaveModel> leavelist = new List<AdminLeaveModel>();
-            OracleConnection con = new OracleConnection(str);
+            OracleConnection con = new OracleConnection(connStr);
             con.Open();
             OracleCommand cmd = new OracleCommand("GET_ADMIN_LEAVE", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -68,13 +71,15 @@ namespace LeaveManagementRepository
             }
 
             con.Close();
+            cmd.Dispose();
+            reader.Dispose();
             return leavelist;
         }
 
         public List<EmployeeModel> GetEmployeeDetails()
         {
             List<EmployeeModel> employeelist = new List<EmployeeModel>();
-            OracleConnection con = new OracleConnection(str);
+            OracleConnection con = new OracleConnection(connStr);
             con.Open();
             OracleCommand cmd = new OracleCommand("GET_EMPLOYEES", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -133,6 +138,8 @@ namespace LeaveManagementRepository
             }
 
             con.Close();
+            cmd.Dispose();
+            reader.Dispose();
             return employeelist;
 
         }
@@ -140,7 +147,7 @@ namespace LeaveManagementRepository
         public List<AdminLeaveModel> GetHistoryDetails()
         {
             List<AdminLeaveModel> leavelist = new List<AdminLeaveModel>();
-            OracleConnection con = new OracleConnection(str);
+            OracleConnection con = new OracleConnection(connStr);
             con.Open();
             OracleCommand cmd = new OracleCommand("GET_HISTORY", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -194,13 +201,15 @@ namespace LeaveManagementRepository
             }
 
             con.Close();
+            cmd.Dispose();
+            reader.Dispose();
             return leavelist;
         }
 
         public void ApproveLeave(AdminLeaveModel adminLeave)
         {
 
-            OracleConnection con = new OracleConnection(str);
+            OracleConnection con = new OracleConnection(connStr);
             con.Open();
             OracleCommand cmd = new OracleCommand("UPDATE_LEAVESTATUS", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -211,12 +220,14 @@ namespace LeaveManagementRepository
             cmd.ExecuteNonQuery();
 
             con.Close();
+            cmd.Dispose();
+            
         }
 
         public void RejectLeave(AdminLeaveModel adminLeave)
         {
 
-            OracleConnection con = new OracleConnection(str);
+            OracleConnection con = new OracleConnection(connStr);
             con.Open();
             OracleCommand cmd = new OracleCommand("UPDATE_LEAVESTATUS", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -227,28 +238,34 @@ namespace LeaveManagementRepository
             cmd.ExecuteNonQuery();
 
             con.Close();
+            cmd.Dispose();
+            
         }
 
         public void BlockUser(int empid)
         {
-            OracleConnection con = new OracleConnection(str);
+            OracleConnection con = new OracleConnection(connStr);
             con.Open();
             OracleCommand cmd = new OracleCommand("UPDATE REGISTERTABLE SET USERTYPE = 'Blocked User' WHERE EMP_ID='"+empid+"'", con);
             cmd.CommandType = CommandType.Text;
 
             cmd.ExecuteNonQuery();
             con.Close();
+            cmd.Dispose();
+            
         }
 
         public void UnblockUser(int empid)
         {
-            OracleConnection con = new OracleConnection(str);
+            OracleConnection con = new OracleConnection(connStr);
             con.Open();
             OracleCommand cmd = new OracleCommand("UPDATE REGISTERTABLE SET USERTYPE = 'Employee' WHERE EMP_ID='" + empid + "'", con);
             cmd.CommandType = CommandType.Text;
 
             cmd.ExecuteNonQuery();
             con.Close();
+            cmd.Dispose();
+            
         }
 
     }
