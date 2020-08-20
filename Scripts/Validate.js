@@ -90,9 +90,9 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
     $scope.Login = function () {
 
         $http.post("/Login/LoginEmployee", $scope.login).success(function (response) {
-            debugger;
+            
             if (response == "Login Success") {
-                debugger;
+                
                 //$scope.EmployeeDetails(); 
                 window.location.href = '/Employee/Dashboard?username=' + $scope.login.username;
             }
@@ -121,7 +121,7 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
 
     $scope.ForgetPassword = function () {
 
-        debugger;
+        
         $http.post("/Login/ForgetPassword", $scope.register).success(function (response) {
 
             if (response == "Registered Email") {
@@ -143,7 +143,6 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
             params: { username: $scope.login.username }
         }).then(function (response) {
             console.log("success");
-            debugger;
             angular.copy(response.data, $scope.register);
             $scope.GetLeaveDetails();
             //$scope.GetProfileDetails();
@@ -152,7 +151,6 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
             //$location.path('/Employee/Dashboard/').replace();
 
         },function (response) {
-            debugger
             console.log("error");
         });
     }
@@ -172,11 +170,9 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
             params: { username: $scope.login.username }
         }).then(function (response) {
             console.log("success");
-            debugger;
             angular.copy(response.data, $scope.register);
             $scope.GetAdminLeaveDetails();
         }, function (response) {
-            debugger
             console.log("error");
         });
     }
@@ -192,7 +188,6 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
 
         $http.post("/Employee/ApplyForLeaveDetails", $scope.leave).success(function (response) {
             alert("Leave Applied Successfully");
-            debugger;
             $scope.leave = {};
             $scope.myForm.$setPristine();
             $scope.myForm.$setUntouched();
@@ -209,11 +204,9 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
             url: '/Employee/GetLeaveDetails',
         }).then(function (response) {
             console.log("success");
-            debugger;
             //$scope.leave = response.data;
             $scope.LeaveData = response.data;
         }, function (response) {
-            debugger
             console.log("error");
         });
     }
@@ -225,11 +218,9 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
             url: '/Employee/GetProfileDetails',
         }).then(function (response) {
             console.log("success");
-            debugger;
             angular.copy(response.data, $scope.profile);
-            $scope.profile.Dateofbirth = $filter('jsdate')(response.data.Dateofbirth);
+            $scope.profile.dateofbirth = $filter('jsdate')(response.data.dateofbirth);
         }, function (response) {
-            debugger
             console.log("error");
         });
 
@@ -254,10 +245,8 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
             url: '/Admin/GetAdminLeaveDetails',
         }).then(function (response) {
             console.log("success");
-            debugger;
             $scope.Adminleave = response.data;
         }, function (response) {
-            debugger
             console.log("error");
         });
 
@@ -270,10 +259,8 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
             url: '/Admin/GetEmployeeDetails',
         }).then(function (response) {
             console.log("success");
-            debugger;
             $scope.Employees = response.data;
         }, function (response) {
-            debugger
             console.log("error");
         });
     }
@@ -285,10 +272,9 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
             url: '/Admin/GetHistoryDetails',
         }).then(function (response) {
             console.log("success");
-            debugger;
             $scope.History = response.data;
         }, function (response) {
-            debugger
+            
             console.log("error");
         });
     }
@@ -296,16 +282,14 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
 
     $scope.GetMasterData = function () {
 
-        debugger;
+
         $http({
             method: 'GET',
             url: '/Employee/GetMasterData',
         }).then(function (response) {
             console.log("success");
-            debugger;
             $scope.Master = response.data;
         }, function (response) {
-            debugger
             console.log("error");
         });
 
@@ -315,7 +299,7 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
 
     $scope.sortBy = function (column) {
 
-        debugger;
+
         $scope.sortColumn = column;
         $scope.reverse = !$scope.reverse;
     }
@@ -324,7 +308,7 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
 
     $scope.CancelLeave = function (l) {
 
-        debugger;
+
         $scope.leave = l;
         $scope.leave.startdate = new Date(parseInt($scope.leave.startdate.substr(6)));
 
@@ -339,7 +323,7 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
 
     $scope.ApproveLeave = function (a) {
 
-        debugger;
+
         $scope.Adminleave = a;
         $scope.Adminleave.startdate = new Date(parseInt($scope.Adminleave.startdate.substr(6)));
 
@@ -353,11 +337,11 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
 
     $scope.RejectLeave = function (a) {
 
-        debugger;
+
         $scope.Adminleave = a;
         $scope.Adminleave.startdate = new Date(parseInt($scope.Adminleave.startdate.substr(6)));
 
-        debugger;
+
         $http.post("/Admin/RejectLeave", $scope.Adminleave).success(function (response) {
             console.log("Leave Rejected Successfully");
             $scope.GetAdminLeaveDetails();
@@ -369,7 +353,6 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
     $scope.BlockUser = function (Emp) {
 
         $scope.Employees = Emp;
-        debugger;
         $http.post("/Admin/BlockUser", $scope.Employees).success(function (response) {
             console.log("User Blocked Successfully");
             $scope.GetEmployeeDetails();
@@ -382,7 +365,6 @@ app.controller("myCtrl", function ($scope,$http,$filter) {
     $scope.UnblockUser = function (Emp) {
 
         $scope.Employees = Emp;
-        debugger;
         $http.post("/Admin/UnblockUser", $scope.Employees).success(function (response) {
             console.log("User Unblocked Successfully");
             $scope.GetEmployeeDetails();
@@ -435,36 +417,6 @@ app.directive('numbersOnly', function () {
     };
 });
 
-/*MY KNOWLEDGE
-app.directive('numbersOnly', function () {
-  return  {
-      restrict: 'A',
-      link: function (scope, elm, attrs, ctrl) {
-          elm.on('keydown', function (event) {
-              if(event.shiftKey)
-                  {
-                      event.preventDefault(); 
-                      return false;
-                  }
-              //console.log(event.which);
-              if ([8, 13, 27, 37, 38, 39, 40].indexOf(event.which) > -1) {
-                  // backspace, enter, escape, arrows
-                  return true;
-              } else if (event.which >= 48 && event.which <= 57) {
-                  // numbers 0 to 9
-                  return true;
-              } else if (event.which >= 96 && event.which <= 105) {
-                  // numpad number
-                  return true;
-              } else {
-                  event.preventDefault();
-                  return false;
-              }
-          });
-      }
-  }
-});*/
-
 app.directive("limitTo", [function () {
     return {
         restrict: "A",
@@ -494,6 +446,56 @@ app.directive('onlyAlphabets', function () {
         }
     };
 });
+
+    /*MY KNOWLEDGE
+    app.directive('numbersOnly', function () {
+      return  {
+          restrict: 'A',
+          link: function (scope, elm, attrs, ctrl) {
+              elm.on('keydown', function (event) {
+                  if(event.shiftKey)
+                      {
+                          event.preventDefault(); 
+                          return false;
+                      }
+                  //console.log(event.which);
+                  if ([8, 13, 27, 37, 38, 39, 40].indexOf(event.which) > -1) {
+                      // backspace, enter, escape, arrows
+                      return true;
+                  } else if (event.which >= 48 && event.which <= 57) {
+                      // numbers 0 to 9
+                      return true;
+                  } else if (event.which >= 96 && event.which <= 105) {
+                      // numpad number
+                      return true;
+                  } else {
+                      event.preventDefault();
+                      return false;
+                  }
+              });
+          }
+      }
+    });*/
+
+    // My Knowledge
+    //app.directive('validateEmail', function () {
+    //    var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+
+    //    return {
+    //        require: 'ngModel',
+    //        restrict: '',
+    //        link: function (scope, elm, attrs, ctrl) {
+    //            // only apply the validator if ngModel is present and Angular has added the email validator
+    //            if (ctrl && ctrl.$validators.email) {
+
+    //                // this will overwrite the default Angular email validator
+    //                ctrl.$validators.email = function (modelValue) {
+    //                    return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);
+    //                };
+    //            }
+    //        }
+    //    };
+    //});
 
 
     //$scope.EmployeeDetails = function () {
